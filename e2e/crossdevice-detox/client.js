@@ -33,16 +33,20 @@ module.exports = {
     const check = async () => {
       const res = await request('check', eventName);
       if (res === 'true') {
-        console.log(`=> ${eventName}  Synced `);
+        console.log(`=> ${eventName} synced!`);
         return true;
       }
-      console.log(`=> ${eventName} Not synced yet. Waiting 2 sec to repeat`);
+      console.log(
+        `=> ${eventName} ${configuration} is not synced yet. Waiting for 2 sec to repeat`
+      );
       if (attempts < 10) {
         await delay(2000);
         attempts++;
         return check();
       }
-      throw new Error("Couldn't sync after 10 attempts");
+      throw new Error(
+        `[${configuration}] Couldn't sync ${event} after 10 attempts`
+      );
     };
 
     return await check();

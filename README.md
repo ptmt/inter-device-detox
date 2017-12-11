@@ -1,10 +1,24 @@
-# Testing two devices interacting with each other using Detox
+# Testing multiple devices interacting with each other using Detox
+
+A simple approach to coordinate Detox tests across multiple instances of Detox, useful for chat applications or any multi clients applications (e.g. Taxi app for drivers vs Taxi app for consumers);
+
+The flakiness is also increased dramatically, since it's now depends on N devices, network and servers, but in some cases it could be desired since we test our app as a black box.
 
 * Example screenshot
 
+This example contains a simple chat server which is able to do very basic things:
+
+* Register a new user on a startup
+* Send a status when other user started typing
+* Send a message to other user
+* Get an status update when a message has been received on the server
+* Get an status update when a message has been delivered to the end user
+
+By using two or more instances of Detox e2e test processes that can interact with each other we can try to repeat all stages of the process.
+
 ## How it works
 
-A node.js server that accepts certain commands and allows one device waiting for another, and share some information between them.
+All we need is a locking mechanism. In this implementation, it's a node.js server that accepts certain commands and allows one device to wait for another, and share some information between them.
 
 -- device1 -- [server] --- device 2 --
 
@@ -28,11 +42,28 @@ also, add two or more configurations to your Detox `package.json` section and ru
   }
 ```
 
+and then after building your app just
+
+```
+yarn e2e
+```
+
+Detox also allows to reuse apps, and that is very handy in developement. See package.json.
+
 ## API
 
 ```javascript
-connect
-wait
-share
-get shared
+import client from 'inter-device-detox';
+
+client.syncWithEvent(event: string) // make sure this events happened on every device, a simple locking mechanism
+client.shareVar(name: string, var: any) // make a var available on other app instances
+client.getSharedVars(): {[string]: any} // obtain all shared variables from other devices
+```
+
+```
+
+```
+
+```
+
 ```

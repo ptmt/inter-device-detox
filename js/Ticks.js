@@ -31,6 +31,7 @@ class BlinkingIndicator extends React.Component<
   render() {
     return (
       <Animated.View
+        testID="BlinkingIndicator"
         style={[this.props.style, { opacity: this.state.opacity }]}
       >
         <Icon
@@ -64,7 +65,7 @@ export default function MessageTicks({
   }
   if (currentMessage.attributes.sent && currentMessage.attributes.delivered) {
     return (
-      <View style={styles.tickView}>
+      <View style={styles.tickView} testID={'DeliveredIndicator'}>
         <Icon
           name="done-all"
           size={12}
@@ -76,7 +77,7 @@ export default function MessageTicks({
   }
   if (currentMessage.attributes.sent && !currentMessage.attributes.delivered) {
     return (
-      <View style={styles.tickView}>
+      <View style={styles.tickView} testID={'SentButNotDeliveredIndicator'}>
         <Icon
           name="done"
           size={12}

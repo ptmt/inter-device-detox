@@ -11,7 +11,7 @@ for cmd in "$@"; do {
 
 trap "kill $PID_LIST" SIGINT
 
-echo "Parallel processes have started";
+echo "Parallel processes have started $PID_LIST";
 
 wait $PID_LIST
 

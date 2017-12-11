@@ -2,7 +2,7 @@
 const http = require('http');
 const { URL } = require('url');
 const port = 8335;
-const DEBUG = true;
+const DEBUG = false;
 
 const globalState = {};
 
