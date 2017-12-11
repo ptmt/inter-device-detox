@@ -1,4 +1,4 @@
-const client = require('./crossdevice-detox/client');
+const client = require('./inter-device-detox/client');
 const isItFirstInstanceApp = process.argv
   .slice(2)
   .find(c => c.indexOf('ios.sim.consumer') > -1);
@@ -23,7 +23,7 @@ describe('Chat app', () => {
     await expect(element(by.id('SendButton'))).toBeVisible();
     await expect(element(by.id('ComposerTextInput'))).toBeVisible();
     await client.syncWithEvent('ReadyToStart');
-    const message1 = makeString(50);
+    const message1 = makeString(10);
     await client.shareVar('message1', message1);
     if (isItFirstInstanceApp) {
       await element(by.id('ComposerTextInput')).tap();

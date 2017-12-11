@@ -1,5 +1,5 @@
 {
-  "name": "crossdevice-detox",
+  "name": "inter-device-detox",
   "version": "0.0.1",
   "description": "A simple client-server for syncing multiple interacting devices",
   "main": "client.js",

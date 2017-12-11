@@ -10,8 +10,10 @@
     "e2e:build:consumer": "detox build -c ios.sim.consumer.debug",
     "e2e:build:provider": "detox build -c ios.sim.provider.debug",
     "e2e:build": "yarn e2e:build:consumer && yarn e2e:build:provider",
-    "e2e": "./e2e/crossdevice-detox/parallel_commands.sh \"yarn e2e:consumer\" \"yarn e2e:provider\"",
-    "e2e:reuse": "./e2e/crossdevice-detox/parallel_commands.sh \"yarn e2e:consumer -- --reuse\" \"yarn e2e:provider -- --reuse\"",
+    "e2e":
+      "./e2e/inter-device-detox/parallel_commands.sh \"yarn e2e:consumer\" \"yarn e2e:provider\"",
+    "e2e:reuse":
+      "./e2e/inter-device-detox/parallel_commands.sh \"yarn e2e:consumer -- --reuse\" \"yarn e2e:provider -- --reuse\"",
     "e2e:consumer": "detox test -c ios.sim.consumer.debug",
     "e2e:provider": "detox test -c ios.sim.provider.debug"
   },
@@ -41,14 +43,18 @@
   "detox": {
     "configurations": {
       "ios.sim.consumer.debug": {
-        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/ChatApp.app",
-        "build": "xcodebuild -project ios/ChatApp.xcodeproj -scheme ChatApp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "binaryPath":
+          "ios/build/Build/Products/Debug-iphonesimulator/ChatApp.app",
+        "build":
+          "xcodebuild -project ios/ChatApp.xcodeproj -scheme ChatApp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
         "name": "iPhone 7"
       },
       "ios.sim.provider.debug": {
-        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/ChatApp.app",
-        "build": "xcodebuild -project ios/ChatApp.xcodeproj -scheme ChatApp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "binaryPath":
+          "ios/build/Build/Products/Debug-iphonesimulator/ChatApp.app",
+        "build":
+          "xcodebuild -project ios/ChatApp.xcodeproj -scheme ChatApp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
         "name": "iPhone 8"
       }
