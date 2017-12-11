@@ -1,21 +1,21 @@
 # Coordinate Detox instances across multiple devices that need interacting with each other
 
-A simple approach to coordinate Detox tests across multiple instances of Detox, useful for chat applications or any multi clients applications (e.g. Taxi app for drivers vs Taxi app for consumers);
 
-The flakiness is also increased, since the overall result now depends on N Detox sessions, but also network and servers, although in some cases it could be desired behavior since we test our app as a black box.
+A simple approach to coordinating Detox tests across multiple instances of Detox, useful for chat applications or any multi-clients applications (e.g. Taxi app for drivers vs Taxi app for consumers);
+
+The test flakiness is also increased, since the overall result now depends on N Detox sessions plus reliability of network and servers, although in some cases it could be the desired behavior since we test our app as a black box.
 
 ![dec-11-2017 17-47-25](https://user-images.githubusercontent.com/1004115/33836772-6e25f5a4-de9b-11e7-8fc4-7ec78d179b8b.gif)
 
 This example contains a simple chat server which is able to do very basic things:
-
 * Register a new user on a startup
 * Emulate slow server responses
-* Send a status when other user started typing
-* Send a message to other user
-* Get an status update when a message has been received on the server
-* Get an status update when a message has been delivered to the end user
+* Show a typing indicator when the other user started typing a message
+* Send a message to the other user
+* Get a status update when a message has been received on the server
+* Get a status update when a message has been delivered to the end user
 
-By using two or more instances of Detox e2e test processes interacting with each other we can try to repeat all stages of the process, which is useful not only for testing, but for an automation in general, getting right from the scratch app to the specific state when you need it.
+By using two or more instances of Detox e2e test processes interacting with each other we can try to repeat all stages of the process, which is useful not only for testing, but for automation in general. It’s convenient to quickly get certain state of the app from scratch.  
 
 ## How it works
 
@@ -42,13 +42,13 @@ This is an experiment. And since Detox has its own server this features also cou
 
 ## Getting started
 
-Since there are just a few small files with the approach that still has to be proven and polished, the recommended way is to vendor these files from `./e2e/inter-device-detox`. In case you willing to help building this library and ready to send pull requests, you can go with the usual way:
+Since there are just a few small files with the approach that still has to be proven and polished, the recommended way is to vendor these files from `./e2e/inter-device-detox`. In case you are willing to help build this library and ready to send pull requests, you can go with the usual way
 
 ```
 yarn add inter-device-detox --dev
 ```
 
-also, add two or more configurations to your Detox `package.json` section and run your e2e tests with the convinient helper like this:
+also, add two or more configurations to your Detox `package.json` section and run your e2e tests with the convienient helper like this:
 
 ```json
   "scripts": {
