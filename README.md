@@ -1,4 +1,4 @@
-# Testing multiple devices interacting with each other using Detox
+# Coordinate Detox instances across multiple devices that need interacting with each other
 
 A simple approach to coordinate Detox tests across multiple instances of Detox, useful for chat applications or any multi clients applications (e.g. Taxi app for drivers vs Taxi app for consumers);
 
