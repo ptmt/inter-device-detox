@@ -15,7 +15,7 @@ This example contains a simple chat server which is able to do very basic things
 * Get a status update when a message has been received on the server
 * Get a status update when a message has been delivered to the end user
 
-By using two or more instances of Detox e2e test processes interacting with each other we can try to repeat all stages of the process, which is useful not only for testing, but for automation in general. It’s convenient to quickly get certain state of the app from scratch.  
+By using two or more instances of Detox e2e test processes interacting with each other we can try to repeat all stages of the process, which is useful not only for testing, but for automation in general. It’s convenient if you want to get your app into a certain state from scratch quickly.  
 
 ## How it works
 
@@ -42,7 +42,7 @@ This is an experiment. And since Detox has its own server this features also cou
 
 ## Getting started
 
-Since there are just a few small files with the approach that still has to be proven and polished, the recommended way is to vendor these files from `./e2e/inter-device-detox`. In case you are willing to help build this library and ready to send pull requests, you can go with the usual way
+Since there are just a few small files with the approach that still has to be proven and polished, the recommended way is to vendor these files from `./e2e/inter-device-detox`. In case you are willing to help build this library and ready to send pull requests, you can go with the usual way:
 
 ```
 yarn add inter-device-detox --dev
@@ -70,9 +70,4 @@ import client from 'inter-device-detox';
 client.syncWithEvent(event: string) // make sure this events happened on every device, a simple locking mechanism
 client.shareVar(name: string, var: any) // make a var available on other app instances
 client.getSharedVars(): {[string]: any} // obtain all shared variables from other devices
-```
-
-```
-
-```
 ```
