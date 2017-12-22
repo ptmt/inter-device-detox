@@ -45,7 +45,7 @@ module.exports = {
         return check();
       }
       throw new Error(
-        `[${configuration}] Couldn't sync ${event} after 10 attempts`
+        `[${configuration}] Couldn't sync ${eventName} after 10 attempts`
       );
     };
 
